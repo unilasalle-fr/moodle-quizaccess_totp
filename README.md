@@ -16,7 +16,7 @@ The **TOTP Quiz Access Rule** plugin adds an additional security layer to Moodle
 **Key features:**
 
 - ✅ TOTP-based access control for quizzes
-- 🔒 Session caching (1 hour) to avoid re-entering the code for multiple attempts
+- 🔒 TOTP required once per quiz attempt (session-based validation)
 - 🎯 Perfect for supervised exams and in-class assessments
 - ✅ Integrates seamlessly with the `local_totp` plugin
 
@@ -87,8 +87,9 @@ The **TOTP Quiz Access Rule** plugin adds an additional security layer to Moodle
    - Enter the code and submit
 
 2. **Multiple attempts**
-   - Once validated, the TOTP check is cached for 1 hour per quiz
-   - You won't need to re-enter the code for subsequent attempts within that hour
+   - You will need to enter a valid TOTP code when starting each new quiz attempt
+   - Once validated, you won't be asked again during the same attempt (even if you navigate away and come back)
+   - When you finish an attempt and start a new one, you'll need to enter a new TOTP code
 
 ### Configuration
 
@@ -102,7 +103,7 @@ The plugin works automatically when the `local_totp` plugin is configured. All s
 This plugin is GDPR-compliant:
 
 - ✅ Does not store any personal data in the database
-- ✅ Only uses temporary session data (expires after 1 hour)
+- ✅ Only uses temporary session data (cleared when the attempt is finished)
 - ✅ Includes a privacy provider implementation
 
 ### Support
@@ -132,7 +133,7 @@ Le plugin **Règle d'accès aux quiz TOTP** ajoute une couche de sécurité supp
 **Fonctionnalités principales :**
 
 - ✅ Contrôle d'accès basé sur TOTP pour les quiz
-- 🔒 Mise en cache de session (1 heure) pour éviter de ressaisir le code pour plusieurs tentatives
+- 🔒 TOTP requis une fois par tentative de quiz (validation par session)
 - 🎯 Parfait pour les examens surveillés et les évaluations en classe
 - ✅ S'intègre parfaitement avec le plugin `local_totp`
 
@@ -203,8 +204,9 @@ Le plugin **Règle d'accès aux quiz TOTP** ajoute une couche de sécurité supp
    - Saisissez le code et validez
 
 2. **Tentatives multiples**
-   - Une fois validé, la vérification TOTP est mise en cache pour 1 heure par quiz
-   - Vous n'aurez pas besoin de ressaisir le code pour les tentatives suivantes dans cette heure
+   - Vous devrez saisir un code TOTP valide au démarrage de chaque nouvelle tentative de quiz
+   - Une fois validé, vous ne serez plus sollicité pendant la même tentative (même si vous naviguez ailleurs et revenez)
+   - Quand vous terminez une tentative et en démarrez une nouvelle, vous devrez saisir un nouveau code TOTP
 
 ### Configuration
 
@@ -218,7 +220,7 @@ Le plugin fonctionne automatiquement lorsque le plugin `local_totp` est configur
 Ce plugin est conforme au RGPD :
 
 - ✅ Ne stocke aucune donnée personnelle dans la base de données
-- ✅ Utilise uniquement des données de session temporaires (expire après 1 heure)
+- ✅ Utilise uniquement des données de session temporaires (supprimées à la fin de la tentative)
 - ✅ Inclut une implémentation du fournisseur de confidentialité
 
 ### Support

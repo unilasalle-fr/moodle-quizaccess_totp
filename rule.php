@@ -33,7 +33,7 @@ use mod_quiz\form\preflight_check_form;
  *
  * Students must enter a valid TOTP code provided by the teacher
  * before they can start a quiz attempt. The validation is cached
- * in session for 1 hour per course+quiz combination.
+ * in session for the duration of the attempt.
  *
  * @package   quizaccess_totp
  * @copyright 2025, Loïc CRAMPON <loic.crampon@gmail.com>
@@ -163,7 +163,7 @@ class quizaccess_totp extends access_rule_base {
      * Checks if a preflight check is required.
      *
      * Returns false if the user has already validated a TOTP code
-     * for this quiz (stored in session).
+     * for this quiz in the current session.
      *
      * @param int|null $attemptid The attempt ID if continuing an attempt
      * @return bool True if TOTP code needs to be entered
@@ -235,8 +235,8 @@ class quizaccess_totp extends access_rule_base {
     /**
      * Called when the preflight check has passed.
      *
-     * This is called after the user has successfully entered the TOTP code.
-     * We store a flag in the session to remember they have already been checked.
+     * Stores a flag in the session to remember that the user has
+     * already entered a valid TOTP code for this quiz.
      *
      * @param int|null $attemptid The attempt ID
      */

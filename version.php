@@ -27,7 +27,7 @@ $plugin->requires = 2024100705.00;
 $plugin->supported = [405, 500];
 $plugin->component = 'quizaccess_totp';
 $plugin->maturity = MATURITY_ALPHA;
-$plugin->release = 'v0.2.1';
+$plugin->release = 'v0.2.2';
 
 $plugin->dependencies = [
     'local_totp' => 2025100203,
